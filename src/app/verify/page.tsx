@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, Suspense } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
@@ -19,7 +19,7 @@ const DARK_BG = "#1F2667";
 const CARD_BG = "#F1EFE0";
 const RESEND_COOLDOWN_SEC = 20;
 
-export default function VerifyPage() {
+function VerifyContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const { setUser } = useAuth();
@@ -209,5 +209,28 @@ export default function VerifyPage() {
 
       <ProjectQuestionCTA />
     </div>
+  );
+}
+
+function VerifyFallback() {
+  return (
+    <div className="min-h-screen flex flex-col mt-2 mx-4">
+      <section
+        className="relative flex flex-col rounded-[20px] md:pb-30 items-center px-4 pt-8 pb-12 sm:px-6 md:px-8 lg:px-10 overflow-hidden"
+        style={{ background: DARK_BG }}
+      >
+        <div className="relative z-10 w-full flex flex-col items-center justify-center min-h-[200px]">
+          <p className="text-[#F1EFE0] text-sm">Loading…</p>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+export default function VerifyPage() {
+  return (
+    <Suspense fallback={<VerifyFallback />}>
+      <VerifyContent />
+    </Suspense>
   );
 }
