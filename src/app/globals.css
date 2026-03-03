@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Regina";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Regina.woff2") format("woff2"), url("/fonts/Regina.woff") format("woff");
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --font-title: "Regina", Georgia, serif;
+  --font-body: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --nav-hero-bg: rgba(74, 44, 42, 0.8);
+
+  /* How It Works / Founder Message palette */
+  --bg: #F1EFE0;
+  --ivory: #F1EFE0;
+  --primary: #D15535;
+  --accent: #D35B3B;
+  --text: #4D4842;
+  --muted: #7D7872;
+  --divider: #DAD6C8;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-ui: Inter, system-ui, sans-serif;
+  --font-signature: "Great Vibes", cursive;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-title: var(--font-title);
+  --font-body: var(--font-body);
+  --font-sans: var(--font-body);
+  --color-nav-hero-bg: var(--nav-hero-bg);
+  --color-ivory: var(--ivory);
+  --color-primary: var(--primary);
+  --color-accent: var(--accent);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-divider: var(--divider);
+  --font-display: var(--font-display);
+  --font-ui: var(--font-ui);
+  --font-signature: var(--font-signature);
+}
+
+:root {
+  --hero-aspect-ratio: 1880 / 958;
+  --hero-border-radius: 1.75rem;
+  --hero-max-width: 1880px;
+  --container-padding: clamp(0rem, 5vw, 1rem);
+}
+
+
+.hero-title {
+  font-family: "Regina", serif;
+  letter-spacing: 0.04em;
+  font-kerning: auto;
+  font-feature-settings: "kern" 1, "liga" 1, "clig" 1, "case" 1;
+  font-optical-sizing: auto;
+  text-rendering: geometricPrecision;
+}
+
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+html,
+body {
+  font-family: var(--font-body);
+  background: #F1EFE0;
+}
